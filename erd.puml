@@ -1,0 +1,44 @@
+@startuml notification_db-dasign
+
+entity admin_reg {
+    * id BIGINT <<PK>>
+    --
+    * admin_id BIGINT <<FK>>
+    * super_admin_id BIGINT <<FK>>
+    * status VARCHAR(100) 
+}
+
+entity role_actors {
+    * id BIGINT <<PK>>
+    --
+    * role_name VARCHAR(100) 
+}
+
+entity actors {
+    * id BIGINT <<PK>>
+    --
+    * username VARCHAR(100)
+    * password VARCHAR(100)
+    * role_id BIGINT <<FK>>
+    * is_verified BOOLEAN
+    * is_active BOOLEAN
+    * created_at TIMESTAMP
+    * updated_at TIMESTAMP
+}
+
+entity customers {
+    * id BIGINT <<PK>>
+    --
+    * first_name VARCHAR(100)
+    * last_name VARCHAR(100)
+    * email VARCHAR(100)
+    * avatar VARCHAR(100)
+    * created_at TIMESTAMP
+    * updated_at TIMESTAMP
+}
+
+' relation 
+actors }o--o| role_actors
+admin_reg }o--o| actors
+
+@enduml
