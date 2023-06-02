@@ -16,8 +16,8 @@ CREATE TABLE actors (
     role_id BIGINT UNSIGNED,
     is_verified BOOLEAN,
     is_active BOOLEAN,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     PRIMARY KEY(id),
     FOREIGN KEY(role_id) REFERENCES role_actors(id)
@@ -29,8 +29,8 @@ CREATE TABLE customers (
     last_name VARCHAR(100),
     email VARCHAR(100),
     avatar VARCHAR(100),
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     
     PRIMARY KEY(id)
 )
